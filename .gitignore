@@ -1,5 +1,4 @@
 ﻿# exclude everything except directory src & pom.xml
-/*
-!/src
-!pom.xml
-!.gitignore
+/.idea
+/target
+ImageComparator.iml
