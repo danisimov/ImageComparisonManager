@@ -1,4 +1,3 @@
-﻿# exclude everything except directory src & pom.xml
-/.idea
+﻿/.idea
 /target
 ImageComparator.iml
