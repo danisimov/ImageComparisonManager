@@ -8,7 +8,7 @@ import java.io.File;
 public class ImageComparator {
     ComparisonManager comparisonManager;
 
-    void initComparisonManager(File scrImage) {
+    public void initComparisonManager(File scrImage) {
         comparisonManager = new ComparisonManager();
         comparisonManager.initImageManager(scrImage);
     }
