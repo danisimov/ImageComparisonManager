@@ -1,4 +1,4 @@
-package service;
+package imageManagement;
 
 import org.apache.commons.io.FileUtils;
 
@@ -8,10 +8,10 @@ import java.io.IOException;
 /**
  * Created by danisimov on 4/4/16.
  */
-class LocalImageManager implements IImageManager {
+public class LocalImageManager implements IImageManager {
     LocalImageStorage localImageStorage;
 
-    LocalImageManager(File scrImage) {
+    public LocalImageManager(File scrImage) {
         localImageStorage = new LocalImageStorage(scrImage);
 
         if(!verifyImageExists("expected")) {
@@ -43,14 +43,5 @@ class LocalImageManager implements IImageManager {
 
     public void deleteImage(String key) {
         localImageStorage.filesCollection.get(key).delete();
-    }
-
-    public void flush() {
-        if(verifyImageExists("actual")){
-            deleteImage("actual");
-        }
-        if(verifyImageExists("difference")){
-            deleteImage("difference");
-        }
     }
 }

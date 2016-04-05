@@ -1,5 +1,7 @@
 package service;
 
+import adapter.ComparisonManager;
+
 import java.io.File;
 
 /**
@@ -8,8 +10,11 @@ import java.io.File;
 public class ImageComparator {
     ComparisonManager comparisonManager;
 
-    public void initComparisonManager(File scrImage) {
+    public ImageComparator() {
         comparisonManager = new ComparisonManager();
+    }
+
+    public void initComparisonManager(File scrImage) {
         comparisonManager.initImageManager(scrImage);
     }
 

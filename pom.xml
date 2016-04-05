@@ -8,16 +8,16 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
-<dependencies>
-    <dependency>
-        <groupId>org.im4java</groupId>
-        <artifactId>im4java</artifactId>
-        <version>LATEST</version>
-    </dependency>
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>LATEST</version>
-    </dependency>
-        </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.im4java</groupId>
+            <artifactId>im4java</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>LATEST</version>
+        </dependency>
+    </dependencies>
 </project>
