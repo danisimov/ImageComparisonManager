@@ -1,7 +1,5 @@
-package adapter;
+package service;
 
-import imageManagement.IImageManager;
-import imageManagement.LocalImageManager;
 import org.im4java.core.CompareCmd;
 import org.im4java.core.IMOperation;
 import org.im4java.process.StandardStream;
@@ -12,10 +10,14 @@ import java.io.File;
  * Created by danisimov on 4/4/16.
  */
 public class ComparisonManager {
-    IImageManager imageManager;
+    private IImageManager imageManager;
 
-    public void initImageManager(File scrImage) {
-        imageManager = new LocalImageManager(scrImage);
+    ComparisonManager(File scrImage, String suiteName) {
+        initImageManager(scrImage, suiteName);
+    }
+
+    public void initImageManager(File scrImage, String suiteName) {
+        imageManager = new LocalImageManager(scrImage, suiteName);
     }
 
     public boolean compare() {

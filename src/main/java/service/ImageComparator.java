@@ -1,28 +1,37 @@
 package service;
 
-import adapter.ComparisonManager;
-
 import java.io.File;
 
 /**
  * Created by danisimov on 28.02.2016.
  */
 public class ImageComparator {
-    ComparisonManager comparisonManager;
+    private static ImageComparator instance;
+    private ComparisonManager comparisonManager;
 
-    public ImageComparator() {
-        comparisonManager = new ComparisonManager();
+    public static synchronized ImageComparator getInstance() {
+        if (instance == null) {
+            instance = new ImageComparator();
+        }
+        return instance;
     }
 
-    public void initComparisonManager(File scrImage) {
-        comparisonManager.initImageManager(scrImage);
+    public synchronized boolean generateComparison(File scrImage, String suiteName) {
+        initComparisonManager(scrImage, suiteName);
+        boolean result = compare();
+        flush();
+        return result;
     }
 
-    public boolean compare() {
+    private void initComparisonManager(File scrImage, String suiteName) {
+        comparisonManager = new ComparisonManager(scrImage, suiteName);
+    }
+
+    private boolean compare() {
         return comparisonManager.compare();
     }
 
-    public void flush() {
+    private void flush() {
         comparisonManager.flush();
     }
 }
