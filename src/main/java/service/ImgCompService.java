@@ -9,10 +9,10 @@ import java.io.File;
 /**
  * Created by danisimov on 4/4/16.
  */
-public class ComparisonManager {
+public class ImgCompService {
     private IImageManager imageManager;
 
-    ComparisonManager(File scrImage, String suiteName) {
+    ImgCompService(File scrImage, String suiteName) {
         initImageManager(scrImage, suiteName);
     }
 

@@ -7,7 +7,7 @@ import java.io.File;
  */
 public class ImageComparator {
     private static ImageComparator instance;
-    private ComparisonManager comparisonManager;
+    private ImgCompService imgCompService;
 
     public static synchronized ImageComparator getInstance() {
         if (instance == null) {
@@ -24,14 +24,14 @@ public class ImageComparator {
     }
 
     private void initComparisonManager(File scrImage, String suiteName) {
-        comparisonManager = new ComparisonManager(scrImage, suiteName);
+        imgCompService = new ImgCompService(scrImage, suiteName);
     }
 
     private boolean compare() {
-        return comparisonManager.compare();
+        return imgCompService.compare();
     }
 
     private void flush() {
-        comparisonManager.flush();
+        imgCompService.flush();
     }
 }
