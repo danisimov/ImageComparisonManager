@@ -9,10 +9,10 @@ import java.io.File;
 /**
  * Created by danisimov on 4/4/16.
  */
-public class ImgCompService {
+public class ImageComparisonService {
     private IImageManager imageManager;
 
-    ImgCompService(File scrImage, String suiteName) {
+    ImageComparisonService(File scrImage, String suiteName) {
         initImageManager(scrImage, suiteName);
     }
 
@@ -41,12 +41,19 @@ public class ImgCompService {
         }
     }
 
-    public void flush() {
+    public void purge() {
         if(imageManager.verifyImageExists("actual")){
             imageManager.deleteImage("actual");
         }
         if(imageManager.verifyImageExists("difference")){
             imageManager.deleteImage("difference");
+        }
+    }
+
+    public void totalPurge() {
+        purge();
+        if(imageManager.verifyImageExists("expected")){
+            imageManager.deleteImage("expected");
         }
     }
 }

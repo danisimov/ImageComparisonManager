@@ -1,3 +1,4 @@
 ﻿/.idea
 /target
-ImageComparator.iml
+!/target/*.jar
+*.iml

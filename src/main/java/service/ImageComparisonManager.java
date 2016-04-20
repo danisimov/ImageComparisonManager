@@ -5,13 +5,13 @@ import java.io.File;
 /**
  * Created by danisimov on 28.02.2016.
  */
-public class ImageComparator {
-    private static ImageComparator instance;
-    private ImgCompService imgCompService;
+public class ImageComparisonManager {
+    private static ImageComparisonManager instance;
+    private ImageComparisonService imgCompService;
 
-    public static synchronized ImageComparator getInstance() {
+    public static synchronized ImageComparisonManager getInstance() {
         if (instance == null) {
-            instance = new ImageComparator();
+            instance = new ImageComparisonManager();
         }
         return instance;
     }
@@ -19,19 +19,23 @@ public class ImageComparator {
     public synchronized boolean generateComparison(File scrImage, String suiteName) {
         initComparisonManager(scrImage, suiteName);
         boolean result = compare();
-        flush();
+        purge();
         return result;
     }
 
     private void initComparisonManager(File scrImage, String suiteName) {
-        imgCompService = new ImgCompService(scrImage, suiteName);
+        imgCompService = new ImageComparisonService(scrImage, suiteName);
     }
 
     private boolean compare() {
         return imgCompService.compare();
     }
 
-    private void flush() {
-        imgCompService.flush();
+    private void purge() {
+        imgCompService.purge();
+    }
+
+    public void totalPurge() {
+        imgCompService.totalPurge();
     }
 }
