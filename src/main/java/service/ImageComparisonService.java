@@ -37,7 +37,7 @@ class ImageComparisonService {
             return true;
         }
         catch (Exception ex) {
-            System.out.println("Check images/$testSuiteName/difference.png file, to see the difference report and read the message below for details");
+            System.out.println("Check images/$testSuiteName/difference.png file, to see the difference report and read the message above for details");
             return false;
         }
     }
