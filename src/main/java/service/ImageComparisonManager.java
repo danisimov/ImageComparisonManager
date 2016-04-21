@@ -1,6 +1,9 @@
 package service;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by danisimov on 28.02.2016.
@@ -36,6 +39,14 @@ public class ImageComparisonManager {
     }
 
     public void totalPurge() {
-        imgCompService.totalPurge();
+        File imgDir = new File("images");
+        if (imgDir.exists()) {
+            try {
+                FileUtils.deleteDirectory(imgDir);
+            }
+            catch (IOException e) {
+                System.out.println(e);
+            }
+        }
     }
 }

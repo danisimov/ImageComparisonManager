@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Created by danisimov on 4/4/16.
  */
-public class ImageComparisonService {
+class ImageComparisonService {
     private IImageManager imageManager;
 
     ImageComparisonService(File scrImage, String suiteName) {
