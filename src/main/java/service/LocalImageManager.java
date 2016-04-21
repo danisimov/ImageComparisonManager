@@ -10,6 +10,7 @@ import java.util.HashMap;
  * Created by danisimov on 4/4/16.
  */
 class LocalImageManager implements IImageManager {
+
     private HashMap<String, File> filesCollection;
 
     LocalImageManager(File scrImage, String suiteName) {

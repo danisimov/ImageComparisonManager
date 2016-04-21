@@ -9,6 +9,7 @@ import java.io.IOException;
  * Created by danisimov on 28.02.2016.
  */
 public class ImageComparisonManager {
+
     private static ImageComparisonManager instance;
     private ImageComparisonService imgCompService;
 

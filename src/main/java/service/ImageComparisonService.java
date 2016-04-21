@@ -10,6 +10,7 @@ import java.io.File;
  * Created by danisimov on 4/4/16.
  */
 class ImageComparisonService {
+
     private IImageManager imageManager;
 
     ImageComparisonService(File scrImage, String suiteName) {
@@ -36,7 +37,7 @@ class ImageComparisonService {
             return true;
         }
         catch (Exception ex) {
-            System.out.println("Check images/difference.png file, to see the difference report");
+            System.out.println("Check images/$testSuiteName/difference.png file, to see the difference report and read the message below for details");
             return false;
         }
     }
