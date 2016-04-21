@@ -39,6 +39,6 @@ public class TestImageComparator {
 
     @AfterClass
     public static void end() {
-        imageComparisonManager.totalPurge();
+        imageComparisonManager.purgeDirectories();
     }
 }

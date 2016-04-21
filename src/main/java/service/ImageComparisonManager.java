@@ -23,7 +23,7 @@ public class ImageComparisonManager {
     public synchronized boolean generateComparison(File scrImage, String suiteName) {
         initComparisonManager(scrImage, suiteName);
         boolean result = compare();
-        purge();
+        purgeFiles();
         return result;
     }
 
@@ -35,11 +35,11 @@ public class ImageComparisonManager {
         return imgCompService.compare();
     }
 
-    private void purge() {
+    private void purgeFiles() {
         imgCompService.purge();
     }
 
-    public void totalPurge() {
+    public void purgeDirectories() {
         File imgDir = new File("images");
         if (imgDir.exists()) {
             try {
