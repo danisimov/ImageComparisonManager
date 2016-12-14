@@ -5,7 +5,6 @@ import java.util.Properties;
 /**
  * Created by danisimov on 21.10.2016.
  */
-
 class OSProperties {
 
     private static Properties properties = System.getProperties();
