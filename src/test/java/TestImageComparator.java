@@ -28,13 +28,13 @@ public class TestImageComparator {
 
     @Test
     public void positiveComparisonTest() {
-        Assert.assertTrue(imageComparisonManager.generateComparison(new File("src/main/java/service/testImg/firstSample.png"), suiteName));
+        Assert.assertTrue(imageComparisonManager.doComparison(new File("src/main/java/service/testImg/firstSample.png"), suiteName));
     }
 
     @Test
     public void negativeComparisonTest() {
-        Assert.assertTrue(imageComparisonManager.generateComparison(new File("src/main/java/service/testImg/firstSample.png"), suiteName));
-        Assert.assertFalse(imageComparisonManager.generateComparison(new File("src/main/java/service/testImg/secondSample.png"), suiteName));
+        Assert.assertTrue(imageComparisonManager.doComparison(new File("src/main/java/service/testImg/firstSample.png"), suiteName));
+        Assert.assertFalse(imageComparisonManager.doComparison(new File("src/main/java/service/testImg/secondSample.png"), suiteName));
     }
 
     @AfterClass

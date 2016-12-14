@@ -1,9 +1,6 @@
 package service;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by danisimov on 28.02.2016.
@@ -20,7 +17,7 @@ public class ImageComparisonManager {
         return instance;
     }
 
-    public synchronized boolean generateComparison(File scrImage, String suiteName) {
+    public synchronized boolean doComparison(File scrImage, String suiteName) {
         initComparisonManager(scrImage, suiteName);
         boolean result = compare();
         purgeFiles();
@@ -40,14 +37,6 @@ public class ImageComparisonManager {
     }
 
     public void purgeDirectories() {
-        File imgDir = new File("images");
-        if (imgDir.exists()) {
-            try {
-                FileUtils.deleteDirectory(imgDir);
-            }
-            catch (IOException e) {
-                System.out.println(e);
-            }
-        }
+        imgCompService.totalPurge();
     }
 }

@@ -11,4 +11,5 @@ interface IImageManager {
     String getImagePath(String key);
     boolean verifyImageExists(String key);
     void deleteImage(String key);
+    void deleteDirectory();
 }

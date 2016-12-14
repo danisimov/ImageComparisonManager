@@ -12,8 +12,10 @@ import java.util.HashMap;
 class LocalImageManager implements IImageManager {
 
     private HashMap<String, File> filesCollection;
+    private File directory;
 
     LocalImageManager(File scrImage, String suiteName) {
+        initDirectory();
         initFilesCollection(suiteName);
 
         if(!verifyImageExists("expected")) {
@@ -23,12 +25,22 @@ class LocalImageManager implements IImageManager {
         copyImage(scrImage, getImage("actual"));
     }
 
+    private void initDirectory() {
+        if (OSProperties.getOSName().contains("Windows")) {
+            directory = new File(OSProperties.getHomeFolder() + "/images");
+        }
+        else {
+            directory = new File("/home/" + OSProperties.getAccountName() + "/images");
+        }
+        if (directory.mkdirs()) { System.out.println("/images directory created");}
+    }
+
     private void initFilesCollection(final String suiteName) {
         filesCollection = new HashMap<String, File>(){
             {
-                put("expected", new File("images/" + suiteName + "/expected.png"));
-                put("actual", new File("images/" + suiteName + "/actual.png"));
-                put("difference", new File("images/" + suiteName + "/difference.png"));
+                put("expected", new File(directory.getPath() + "/" + suiteName + "/expected.png"));
+                put("actual", new File(directory.getPath() + "/" + suiteName + "/actual.png"));
+                put("difference", new File(directory.getPath() + "/" + suiteName + "/difference.png"));
             }
         };
     }
@@ -54,6 +66,17 @@ class LocalImageManager implements IImageManager {
     }
 
     public void deleteImage(String key) {
-        filesCollection.get(key).delete();
+        assert filesCollection.get(key).delete();
+    }
+
+    public void deleteDirectory() {
+        if (directory.exists()) {
+            try {
+                FileUtils.deleteDirectory(directory);
+            }
+            catch (IOException e) {
+                System.out.println("purgeDirectories exception\n" + e);
+            }
+        }
     }
 }

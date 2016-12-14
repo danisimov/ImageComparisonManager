@@ -17,11 +17,11 @@ class ImageComparisonService {
         initImageManager(scrImage, suiteName);
     }
 
-    public void initImageManager(File scrImage, String suiteName) {
+    private void initImageManager(File scrImage, String suiteName) {
         imageManager = new LocalImageManager(scrImage, suiteName);
     }
 
-    public boolean compare() {
+    boolean compare() {
         CompareCmd compare = new CompareCmd();
         compare.setErrorConsumer(StandardStream.STDERR);
         IMOperation cmpOp = new IMOperation();
@@ -42,7 +42,7 @@ class ImageComparisonService {
         }
     }
 
-    public void purge() {
+    void purge() {
         if(imageManager.verifyImageExists("actual")){
             imageManager.deleteImage("actual");
         }
@@ -51,10 +51,7 @@ class ImageComparisonService {
         }
     }
 
-    public void totalPurge() {
-        purge();
-        if(imageManager.verifyImageExists("expected")){
-            imageManager.deleteImage("expected");
-        }
+    void totalPurge() {
+        imageManager.deleteDirectory();
     }
 }
