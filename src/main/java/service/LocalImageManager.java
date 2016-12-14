@@ -65,18 +65,20 @@ class LocalImageManager implements IImageManager {
         return filesCollection.get(key).exists();
     }
 
-    public void deleteImage(String key) {
-        assert filesCollection.get(key).delete();
+    public boolean deleteImage(String key) {
+        return filesCollection.get(key).delete();
     }
 
-    public void deleteDirectory() {
+    public boolean deleteDirectory() {
         if (directory.exists()) {
             try {
                 FileUtils.deleteDirectory(directory);
+                return true;
             }
             catch (IOException e) {
                 System.out.println("purgeDirectories exception\n" + e);
             }
         }
+        return false;
     }
 }

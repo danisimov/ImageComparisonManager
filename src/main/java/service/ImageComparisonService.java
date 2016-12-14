@@ -42,16 +42,18 @@ class ImageComparisonService {
         }
     }
 
-    void purge() {
+    boolean purge() {
+        boolean result = false;
         if(imageManager.verifyImageExists("actual")){
-            imageManager.deleteImage("actual");
+            result = imageManager.deleteImage("actual");
         }
         if(imageManager.verifyImageExists("difference")){
-            imageManager.deleteImage("difference");
+            result = result & imageManager.deleteImage("difference");
         }
+        return result;
     }
 
-    void totalPurge() {
-        imageManager.deleteDirectory();
+    boolean totalPurge() {
+        return imageManager.deleteDirectory();
     }
 }

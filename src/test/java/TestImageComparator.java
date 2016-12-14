@@ -1,8 +1,5 @@
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import service.ImageComparisonManager;
 
 import java.io.File;
@@ -37,8 +34,19 @@ public class TestImageComparator {
         Assert.assertFalse(imageComparisonManager.doComparison(new File("src/main/java/service/testImg/secondSample.png"), suiteName));
     }
 
+    @Test
+    public void purgeFilesTest() {
+        Assert.assertTrue(imageComparisonManager.doComparison(new File("src/main/java/service/testImg/firstSample.png"), suiteName));
+        Assert.assertTrue(imageComparisonManager.purgeFiles());
+    }
+
+    @AfterMethod
+    public static void endTest() {
+        imageComparisonManager.purgeFiles();
+    }
+
     @AfterClass
-    public static void end() {
+    public static void endBundle() {
         imageComparisonManager.purgeDirectories();
     }
 }

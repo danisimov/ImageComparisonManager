@@ -10,6 +10,6 @@ interface IImageManager {
     File getImage(String key);
     String getImagePath(String key);
     boolean verifyImageExists(String key);
-    void deleteImage(String key);
-    void deleteDirectory();
+    boolean deleteImage(String key);
+    boolean deleteDirectory();
 }

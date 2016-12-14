@@ -19,9 +19,7 @@ public class ImageComparisonManager {
 
     public synchronized boolean doComparison(File scrImage, String suiteName) {
         initComparisonManager(scrImage, suiteName);
-        boolean result = compare();
-        purgeFiles();
-        return result;
+        return compare();
     }
 
     private void initComparisonManager(File scrImage, String suiteName) {
@@ -32,11 +30,11 @@ public class ImageComparisonManager {
         return imgCompService.compare();
     }
 
-    private void purgeFiles() {
-        imgCompService.purge();
+    public boolean purgeFiles() {
+        return imgCompService.purge();
     }
 
-    public void purgeDirectories() {
-        imgCompService.totalPurge();
+    public boolean purgeDirectories() {
+        return imgCompService.totalPurge();
     }
 }
