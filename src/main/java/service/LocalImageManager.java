@@ -26,12 +26,7 @@ class LocalImageManager implements IImageManager {
     }
 
     private void initDirectory() {
-        if (OSProperties.getOSName().contains("Windows")) {
-            directory = new File(OSProperties.getHomeFolder() + "/images");
-        }
-        else {
-            directory = new File("/home/" + OSProperties.getAccountName() + "/images");
-        }
+        directory = new File(OSProperties.getHomeFolder() + "/images");
         if (directory.mkdirs()) { System.out.println("/images directory created");}
     }
 
