@@ -39,11 +39,11 @@ class ImageComparisonService {
             return true;
         } catch (InterruptedException e) {
             e.printStackTrace();
-            System.out.println("Check images/$testSuiteName/difference.png file, to see the difference report and read the message above for details");
+            System.out.println("Check /ICS/$testSuiteName/difference.png file, to see the difference report and read the message above for details");
             return false;
         } catch (IOException | IM4JavaException e) {
             e.printStackTrace();
-            System.out.println("Please be sure that ImageMagick is installed, you pass images to manager, and read the message above for details");
+            System.out.println("Please make sure that the ImageMagick is installed and the files for comparison have been passed properly. Also, you might read the message above for details");
             return false;
         }
     }

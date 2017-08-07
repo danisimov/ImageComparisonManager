@@ -26,8 +26,8 @@ class LocalImageManager implements IImageManager {
     }
 
     private void initDirectory() {
-        directory = new File(OSProperties.getHomeFolder() + "/images");
-        if (directory.mkdirs()) { System.out.println("/images directory created");}
+        directory = new File(OSProperties.getHomeFolder() + "/ICS");
+        if (directory.mkdirs()) { System.out.println(directory.getPath() + " directory created");}
     }
 
     private void initFilesCollection(final String suiteName) {
